@@ -1,4 +1,16 @@
-import { ApolloServer,gql } from "apollo-server";
+import { ApolloServer,gql} from "apollo-server";
+
+const tweets = [
+    {
+        id:"1",
+        text:"hi",
+    },
+    {
+        id:"1",
+        text:"hello",
+    },
+]
+
 
 const typeDefs = gql `
     type User{
@@ -15,6 +27,7 @@ const typeDefs = gql `
     type Query{
         allTweets : [Tweet]
         Tweet(id:ID!) : Tweet  
+        ping:String!
     }
     type Mutation{
         postTweet(text:String!,userId:ID!):Tweet!
@@ -22,7 +35,18 @@ const typeDefs = gql `
     }
 `;
 
-const server = new ApolloServer({typeDefs});
+const resolvers = {
+    Query:{
+        allTweets(){
+            return tweets;
+        },
+        Tweet(root, {id}){
+            console.log(id);
+            return tweets.find((tweet) => tweet.id ===id);
+        }
+    }
+}
+const server = new ApolloServer({typeDefs,resolvers});
 
 server.listen().then(({url}) =>{
     console.log(`Running on ${url}`)
