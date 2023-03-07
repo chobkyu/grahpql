@@ -11,10 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^3.12.0",
-    "graphql": "^16.6.0"
+    "graphql": "^16.6.0",
+    "node-fetch": "^3.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
   },
-  "type":"module"
+  "type": "module"
 }
