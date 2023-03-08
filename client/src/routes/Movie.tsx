@@ -1,7 +1,7 @@
 const Movie = () =>{
     return(
         <div>
-
+            hihi
         </div>
     )
 }
