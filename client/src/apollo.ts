@@ -5,15 +5,15 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-client.query({
+// client.query({
     
-    query:gql`
-        {
-            allMovies{
-                title
-            }
-        }   
-    `
-}).then(data => console.log(data) );
+//     query:gql`
+//         {
+//             allMovies{
+//                 title
+//             }
+//         }   
+//     `
+// }).then(data => console.log(data) );
 
 export default client;
