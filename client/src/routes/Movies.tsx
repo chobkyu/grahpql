@@ -1,4 +1,5 @@
 import { useApolloClient,gql,useQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 const ALL_MOVIES = gql` 
         query getMovies
@@ -7,7 +8,13 @@ const ALL_MOVIES = gql`
                 title
                 id
             }
-           
+           allTweets{
+                id
+                text
+                author{
+                    fullName
+                }
+           }
         }
     `
 
@@ -24,14 +31,28 @@ const Movies = () => {
 
     if(error){
         return <h1>Could not fetch</h1>
-    }else{
-        return <ul>
-        {data.allMovies.map((movie:movie)=>
-            <li key={movie.id}>{movie.title}</li>
-        )}
-    </ul>
     }
-   
+    
+    return (
+        <ul>
+            <h1>movies</h1>
+            {data.allMovies.map((movie:movie)=>
+                <li key={movie.id}>
+                    <Link to={`/movies/${movie.id}`}>
+                        {movie.title}
+                    </Link>
+                </li>
+            )}
+            <h1>tweets</h1>
+                {data.allTweets.map((tweet:any)=>
+                    <li key={tweet.id}>
+                        
+                    </li>
+                )}
+            </ul>
+        )
+        
+       
     // const client = useApolloClient();
 
     // useEffect(()=>{
