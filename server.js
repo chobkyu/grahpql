@@ -93,6 +93,7 @@ const resolvers = {
             return users;
         },
         allMovies(){
+            console.log("hiyo");
             return fetch("https://yts.mx/api/v2/list_movies.json")
             .then(res => res.json())
             .then(json => json.data.movies);
