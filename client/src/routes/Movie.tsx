@@ -11,18 +11,19 @@ const GET_MOVIE = gql`
     `
 const Movie = () =>{
     const {id} = useParams();
-    const {data , loading} = useQuery(GET_MOVIE,{
+    const result = useQuery(GET_MOVIE,{
         variables:{
             movieId : id
         }
     });
 
-    console.log(data,loading)
+    console.log(result)
+    //console.log(data,loading)
     
-    if(loading){
+    if(result.loading){
         return <h1>Fetching movie...</h1>
     }
-    return <div>{data.movie.title}</div>
+    return <div>dsfsd</div>
 }
 
 export default Movie;

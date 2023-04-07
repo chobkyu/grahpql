@@ -102,7 +102,7 @@ const resolvers = {
             console.log(id);
             const res = await fetch(`https://yts.mx/api/v2/list_movies.json?movie_id=${id}`)
             .then(res => res.json())
-            .then(json => json.data.movies);
+            .then(json => json.data[0]);
             
             console.log(res);
             return res;
